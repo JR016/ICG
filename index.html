@@ -3,12 +3,76 @@
 
     <head>
 
-        <title>HTML Image Coordinate Generator</title>
+        <title>HTML Image Coordinates Generator</title>
         <link href="style.css" rel="stylesheet">
+        <link href="common-styles.css" rel="stylesheet">
+        <link href="pics/points.png" rel="icon">
 
     </head>
 
     <body>
+
+        <!--Show this if the user is on a display of less than 992px-->
+        <section class="unavailableAlert">
+            <h1>Sorry &#128577;</h1>
+            <p>The Image Coordinate Generator is only avaliable for desktop and laptop computers</p>
+        </section>
+
+        <main>
+
+            <!--Includes the title and subtitle of the page-->
+            <header>
+                <h1>Image Coordinates Generator</h1>
+                <p>Get Coordinates to Build HTML Image Maps</p>
+            </header>
+
+            <!--Section that contains a form that asks either for an image URL or a local image-->
+            <section>
+                
+                <form>
+
+                    <!--Ask for the URL-->
+                    <div class="imgURL">
+                        <label for="imageURL">Enter online image URL</label>
+                        <input type="url" id="imageURL" name="imageURL">
+                    </div>
+
+                    <!--Ask for Local Image -->
+                    <div class="imgLocal">      
+                        <label for="localImage">Enter a local image</label>
+                        <input type="file" id="localImage" name="localImage">
+                    </div>
+
+                    <!--An undo button to remove values entered by the user-->
+                    <div class="undoButton">
+                        <button type="button">Undo</button>
+                    </div>
+
+                    <!--A submit button to pass the generating string to the image parser-->
+                    <div class="submitButton">
+                        <input type="submit" value="Submit">
+                    </div>
+
+                </form>
+
+            </section>
+
+            <!--Your personal logo goes in the footer-->
+            <footer>
+
+                <div class="iconContainer">
+                     <!--Add personal Icon-->
+                    <a href="https://github.com/JR016/" target="_blank" title="My Github Page">
+                        <img id="imgIcon" src="pics/personal-icon-no-bg.png" alt="Personal Programmer Icon">
+                    </a> 
+                    <!--Add your programmer nickname-->
+                    <h3>JR016</h3>
+
+                </div>
+
+            </footer>
+
+        </main>
 
         <script src="script.js"></script>
         

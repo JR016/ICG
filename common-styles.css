@@ -1,0 +1,41 @@
+                /*CSS File that contains styles used in all HTML Pages*/
+
+/*If Browser window is less than 992 px, then hide the content and tell the user
+this website is not avaliable to him because it is for desktops or laptops only*/
+
+@media screen and (max-width: 992px)
+{
+    main
+    {
+        display:none;
+    }
+
+    .unavailableAlert
+    {
+        display:flex;
+        flex-flow:column nowrap;
+        align-items:center;
+        justify-content:center;
+        text-align:center;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin:10%;
+    }
+
+    .unavailableAlert h1
+    {
+        font-size:200%;
+    }
+
+    .unavailableAlert p
+    {
+        font-size:120%;
+    }
+}
+
+@media screen and (min-width: 992px)
+{
+    .unavailableAlert
+    {
+        display:none;
+    }
+}
