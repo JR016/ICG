@@ -51,9 +51,27 @@ section > form
     margin-top:30px;
 }
 
+button:hover
+{
+    cursor: pointer;
+}
+
+#localImage
+{
+    display: none;
+}
+
 section > form *
 {
-    margin:10px;
+    margin:8px;
+}
+
+#userLocalImgP
+{
+    font-family: "Times New Roman";
+    font-size: 17px;
+    text-align: center;
+    margin-top: 10px;
 }
 
 footer
@@ -63,8 +81,6 @@ footer
     position:absolute;
     bottom:0;
     width:100%;
-    min-height:1 rem;
-    max-height:2.5 rem;
     font-family:"Lucida Handwriting", cursive;
     font-size:12px;
 }
@@ -79,8 +95,7 @@ footer .iconContainer
 
 #imgIcon
 {
-    width: 160px;
-    height: 130%;
+    width: 18vh;
     background-color:rgb(14, 21, 44);
     border-radius:100%;
     margin-top:0px;

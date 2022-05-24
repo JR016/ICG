@@ -3,6 +3,11 @@
 						 Contains general code that will be used throught the ICG
 */
 
-//Get elements of the main page
+//Get relevant elements of the main page
 const devIcon = document.querySelector("#imgIcon");
 const devNickName = document.querySelector(".iconContainer h3");
+const localImgBtn = document.querySelector("#localBtn");
+const localImgInput = document.querySelector("#localImage");
+const urlImgInput = document.querySelector("#imageURL");
+const undoBtn = document.querySelector(".undoButton > button");
+const localImgP = document.querySelector("#userLocalImgP");
