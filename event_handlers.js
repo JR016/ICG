@@ -14,8 +14,9 @@ devIcon.addEventListener("mouseout", () => {fadeOut()});
 
 devNickName.addEventListener("mouseout", () => {fadeOut()});
 
+
 //Write the user's image file in a small paragraph HTML element
-localImgInput.addEventListener("change", () => {
+localImgInput.addEventListener("change",() => {
 	localUrlConfig();
 	localImgP.value = localImgInput.value;
 	localImgP.innerHTML = localImgInput.value.substr(12, localImgP.value.length - 12);
