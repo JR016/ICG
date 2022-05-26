@@ -14,23 +14,15 @@ devIcon.addEventListener("mouseout", () => {fadeOut()});
 
 devNickName.addEventListener("mouseout", () => {fadeOut()});
 
-//When the local button is hover in, disable the URL input box
-localImgInput.addEventListener("mouseover", () => {localUrlConfig()});
-
-//When the local button is hover out, enable the URL once again
-localImgInput.addEventListener("mouseout", () => {localUrlConfig()});
-
 //Write the user's image file in a small paragraph HTML element
 localImgInput.addEventListener("change", () => {
+	localUrlConfig();
 	localImgP.value = localImgInput.value;
 	localImgP.innerHTML = localImgInput.value.substr(12, localImgP.value.length - 12);
-} );
+});
 
-//Check if local image button has to be disabled when user hover in the URL input tag
-urlImgInput.addEventListener("mouseover", () => {localInputConfig()});
-
-//Check if local image button has to be disabled when user hover out of the URL input tag
-urlImgInput.addEventListener("mouseout", () =>  {localInputConfig()});
+//Enable/Disable the local input tag dependening on the text written un the URL
+urlImgInput.addEventListener("input", () => {localInputConfig()});
 
 //Check what information to clear out when the undo button is clicked
 undoBtn.addEventListener("click", () => {
