@@ -14,48 +14,81 @@ devIcon.addEventListener("mouseout", () => {fadeOut()});
 
 devNickName.addEventListener("mouseout", () => {fadeOut()});
 
-//Make the file dialog appear when the "Browse" button is clicked
-localImgBtn.addEventListener("click", () => {
-	localImgInput.click();
-});
-
 //When the local button is hover in, disable the URL input box
-localImgBtn.addEventListener("mouseover", () => {urlImgInput.disabled = true});
+localImgInput.addEventListener("mouseover", () => {localUrlConfig()});
 
 //When the local button is hover out, enable the URL once again
-localImgBtn.addEventListener("mouseout", () => {urlImgInput.disabled = false});
+localImgInput.addEventListener("mouseout", () => {localUrlConfig()});
 
-localImgInput.onchange = () => {
+//Write the user's image file in a small paragraph HTML element
+localImgInput.addEventListener("change", () => {
 	localImgP.value = localImgInput.value;
-	localImgP.innerHTML = localImgInput.value;
-	console.log(0);
-};
+	localImgP.innerHTML = localImgInput.value.substr(12, localImgP.value.length - 12);
+} );
 
 //Check if local image button has to be disabled when user hover in the URL input tag
-urlImgInput.addEventListener("mouseover", () => {localBtnConfig()});
+urlImgInput.addEventListener("mouseover", () => {localInputConfig()});
 
 //Check if local image button has to be disabled when user hover out of the URL input tag
-urlImgInput.addEventListener("mouseout", () =>  {localBtnConfig()});
+urlImgInput.addEventListener("mouseout", () =>  {localInputConfig()});
 
 //Check what information to clear out when the undo button is clicked
 undoBtn.addEventListener("click", () => {
 
+	//Strip all white space from the given URL
 	urlImgInput.value = urlImgInput.value.replace(/\s/g,'');
 
 	//First check that the length of the URL input tag value is 0
 	if (urlImgInput.value.length != 0)
 	{
+		//Clear the Url image input and enable the local Img Input
 		urlImgInput.value = "";
-		localImgBtn.disabled = false;
+		localImgInput.disabled = false;
 	}
 
-	if (localImgBtn.value != 0)
+	if (localImgInput.value != 0)
 	{
-		localImgBtn.value = "";
+		//Clear the local image input and enable the url input. Re-write the mini HTML tag as well
+		localImgInput.value = "";
 		urlImgInput.disabled = false;
+		localImgP.innerHTML = "";
 	}
+
 });
 
+//Check the given data is ready to display an image file
+submitBtn.addEventListener("click", (e) => {
+
+	//Strip all white space from the given URL
+	urlImgInput.value = urlImgInput.value.replace(/\s/g,'');
+
+	// Check the given URL leads to an image
+	if (urlImgInput.value.length != 0)
+	{
+		const image = new Image();
+	    image.src = urlImgInput.value;
+
+	    //For now if image is sucessful, tell the user the image was sucessful
+	    image.addEventListener('load', () => {alert('success')});
+
+	    //If image failed, tell the user it failed and clear the URL input
+	    image.addEventListener('error', () => {
+	    	alert('failure');
+	    	urlImgInput.value = "";
+	    	localImgInput.disabled = false;
+	    });
+	}
+
+	//Check the local image file is indeed an image
+	if (localImgInput.value != 0)
+	{
+	}
+
+	//Disable default submit button behaviour
+	e.preventDefault();
+});
+
+//Custom functions that sumarize the code found in event listeners' anonymous functions
 function fadeIn()
 {
 	devNickName.style.opacity = "1";
@@ -75,21 +108,34 @@ function fadeOut()
 	devIcon.style.transition = "opacity 0.5s linear";
 }
 
-function localBtnConfig()
+function localInputConfig()
 {
 	urlImgInput.value = urlImgInput.value.replace(/\s/g,'');
 
 	if (urlImgInput.value.length != 0) 
 	{
 	 
-		localImgBtn.disabled = true;
-		localImgBtn.style.cursor = "default";
+		localImgInput.disabled = true;
+		localImgInput.style.cursor = "default";
 		
 	} 
 	else 
 	{ 
-		localImgBtn.disabled = false;
-		localImgBtn.style.cursor = "pointer";
+		localImgInput.disabled = false;
+		localImgInput.style.cursor = "pointer";
 	}
 
+}
+
+function localUrlConfig()
+{
+	if (localImgInput.value.length != 0)
+	{
+		urlImgInput.disabled = true;
+	}
+
+	else
+	{
+		urlImgInput.disabled = false;
+	}
 }
