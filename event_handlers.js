@@ -57,78 +57,69 @@ submitBtn.addEventListener("click", (e) => {
 
 	// Check the given URL leads to an image
 	if (urlImgInput.value.length != 0)
-	{
-		const image = new Image();
-	    image.src = urlImgInput.value;
-
-	    //For now if image is sucessful, tell the user the image was sucessful
-	    image.addEventListener('load', () => {alert('success')});
+	{	
+		const urlImg= new Image();
+		urlImg.src = urlImgInput.value;
+		
+		//If image loaded successfully, then add its source to the givenImgSource
+		urlImg.addEventListener("load", () => {
+			givenImgSrc = urlImg.src;
+		});
+		
 
 	    //If image failed, tell the user it failed and clear the URL input
-	    image.addEventListener('error', () => {
-	    	alert('failure');
+	    urlImg.addEventListener('error', () => {
+	    	alert('The given URL does not belong to an image');
 	    	urlImgInput.value = "";
 	    	localImgInput.disabled = false;
+			givenImgSrc = "";
+			console.clear();
 	    });
+		
 	}
 
 	//Check the local image file is indeed an image
-	if (localImgInput.value != 0)
+	else if (localImgInput.value != 0)
 	{
-	}
-
-	//Disable default submit button behaviour
-	e.preventDefault();
-});
-
-//Custom functions that sumarize the code found in event listeners' anonymous functions
-function fadeIn()
-{
-	devNickName.style.opacity = "1";
-	devIcon.style.transition = "opacity 0.5s linear";
-
-	//Styles when the mouse mouses over the dev icon and nickname
-	devIcon.style.opacity = "1";
-	devIcon.style.transition = "opacity 0.5s linear";
-}
-
-function fadeOut()
-{
-	devNickName.style.opacity = "0.7";
-	devIcon.style.transition - "opacity 0.5s linear";
-
-	devIcon.style.opacity = "0.7";
-	devIcon.style.transition = "opacity 0.5s linear";
-}
-
-function localInputConfig()
-{
-	urlImgInput.value = urlImgInput.value.replace(/\s/g,'');
-
-	if (urlImgInput.value.length != 0) 
-	{
-	 
-		localImgInput.disabled = true;
-		localImgInput.style.cursor = "default";
+		// Get the type of the file the user entered
+		const selectedFileType = localImgInput.files[0].type;
 		
-	} 
+		//If the substring "image" is not present in the file type, tell the user it is not an image
+		if (!selectedFileType.includes("image"))
+		{
+			alert("The file " + localImgInput.files[0].name + " is not an image");
+			localImgInput.value = "";
+			localImgP.value = "";
+			localImgP.innerHTML = "";
+			urlImgInput.disabled = false;
+		}
+		
+		//Otherwise alert the user the image was sucessfully uploaded
+		else
+		{	
+			//Extract the file from which to build the image
+			const localImageFile = localImgInput.files[0];
+			const localImg = new Image();
+			localImg.src = URL.createObjectURL(localImageFile);
+			givenImgSrc = localImg.src;
+		}
+	}
+	
 	else 
-	{ 
-		localImgInput.disabled = false;
-		localImgInput.style.cursor = "pointer";
-	}
-
-}
-
-function localUrlConfig()
-{
-	if (localImgInput.value.length != 0)
 	{
-		urlImgInput.disabled = true;
+		
 	}
-
-	else
-	{
-		urlImgInput.disabled = false;
-	}
-}
+	
+	setTimeout(() => {
+		//Go to app.html
+		if (givenImgSrc.length != 0)
+		{
+			window.sessionStorage.setItem("imgSrc", givenImgSrc);
+			appLink.click();
+		}
+	
+	}, 600);
+	
+	e.preventDefault();
+	
+});

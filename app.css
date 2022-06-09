@@ -1,0 +1,38 @@
+footer
+{
+	height:120px;
+	display: flex;
+	flex-flow: column nowrap;
+}
+
+.tools 
+{
+	display:flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	margin-top:20px;
+}
+
+div.tools > div
+{
+	width: 10%;
+	height: 40px;
+	background-color:green;
+	border: 3px solid black;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+#backToMain
+{
+	margin:auto;
+	background-color:brown;
+}
+
+#backToMain  a
+{
+	text-decoration:none;
+	color:black;
+	font-size:120%;
+}

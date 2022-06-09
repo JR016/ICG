@@ -1,5 +1,23 @@
                 /*CSS File that contains styles used in all HTML Pages*/
 
+/*Make body padding and margin 0 by default*/
+body
+{
+	padding:0;
+	margin:0;
+}
+
+footer
+{
+    background-color:rgb(9, 32, 62);
+    color:white;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    font-family:"Lucida Handwriting", cursive;
+    font-size:12px;
+}
+
 /*If Browser window is less than 992 px, then hide the content and tell the user
 this website is not avaliable to him because it is for desktops or laptops only*/
 

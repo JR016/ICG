@@ -5,12 +5,9 @@
 
 body
 {
-    margin: 0;
-    padding: 0;
     background-color: rgb(2,0,36);
     background-image: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(8,232,34,1) 0%, rgba(63,226,102,1) 0%, rgba(50,241,98,1) 12%, rgba(38,190,221,1) 100%);
     color: white;
-
 }
 
 main
@@ -115,17 +112,6 @@ section > form *
     margin-top: 18px;
 }
 
-footer
-{
-    background-color:rgb(9, 32, 62);
-    color:white;
-    position:absolute;
-    bottom:0;
-    width:100%;
-    font-family:"Lucida Handwriting", cursive;
-    font-size:12px;
-}
-
 footer .iconContainer 
 {
     display:flex;
@@ -150,4 +136,10 @@ footer .iconContainer
     margin:5px;
     opacity: 0.5;
     z-index:1;
+}
+
+.submitButton
+{
+	display:flex;
+	flex-flow: column nowrap;
 }
